@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-
+import { BiArrowToRight } from "react-icons/bi";
+import { toast } from "react-toastify";
 const Quiz = () => {
-  const { name, id, questions } = useLoaderData();
+  const {
+    data: { name, questions },
+  } = useLoaderData();
 
   console.log(useLoaderData());
   const [correctAnswer, setCorrectAnswer] = useState(0);
@@ -10,11 +13,16 @@ const Quiz = () => {
 
   const handleCorrectAnswer = () => {
     setCorrectAnswer((prev) => prev + 1);
-    alert("Correct answer");
+    toast.success("Correct Answer");
   };
   const handleInCorrectAnswer = () => {
     setInCorrectAnswer((prev) => prev + 1);
-    alert("InCorrect answer");
+    toast.error("InCorrect answer");
+  };
+
+  const replaceP = (str) => {
+    let string = str.replace("<p>", "");
+    return string.replace("</p>", "");
   };
 
   return (
@@ -35,11 +43,13 @@ const Quiz = () => {
       <div className="lg:w-1/2 w-full mx-auto my-5">
         {questions?.map((qt) => (
           <div key={qt.id} className="question border p-5 mb-5">
-            <h2>{qt.question}</h2>
+            <h2 className="font-bold  text-slate-900">
+              {replaceP(qt.question)}
+            </h2>
             <ul className="flex flex-col gap-3 mt-4">
               {qt.options.map((option) => (
                 <li
-                  className="cursor-pointer hover:tracking-wider duration-300 transition-all hover:text-orange-500"
+                  className="cursor-pointer text-sm duration-300 transition-all hover:text-orange-500 flex items-center gap-2"
                   key={option}
                   onClick={() =>
                     qt.correctAnswer === option
@@ -47,7 +57,8 @@ const Quiz = () => {
                       : handleInCorrectAnswer()
                   }
                 >
-                  {option}
+                  <BiArrowToRight />
+                  <span>{option}</span>
                 </li>
               ))}
             </ul>

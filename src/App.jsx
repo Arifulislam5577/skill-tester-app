@@ -17,13 +17,18 @@ function App() {
           index: true,
           element: <Home />,
           loader: async () =>
-            // fetch("https://openapi.programming-hero.com/api/quiz"),
-            fetch("testDB/api.json"),
+            fetch("https://openapi.programming-hero.com/api/quiz"),
+          // fetch("testDB/api.json"),
         },
         {
           path: "quiz/:id",
           element: <Quiz />,
-          loader: async ({ params }) => await getQuizById(params.id),
+
+          // loader: async ({ params }) => await getQuizById(params.id),
+          loader: async ({ params }) =>
+            await fetch(
+              `https://openapi.programming-hero.com/api/quiz/${params.id}`
+            ),
         },
         {
           path: "statistics",

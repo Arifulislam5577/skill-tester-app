@@ -5,6 +5,7 @@ import Blog from "./pages/Blog";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import Statistics from "./pages/Statistics";
+import { getQuizById } from "./utils/getQuizById";
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,15 +20,16 @@ function App() {
             fetch("testDB/api.json"),
         },
         {
-          path: "/quiz/:id",
+          path: "quiz/:id",
           element: <Quiz />,
+          loader: async ({ params }) => await getQuizById(params.id),
         },
         {
-          path: "/statistics",
+          path: "statistics",
           element: <Statistics />,
         },
         {
-          path: "/blog",
+          path: "blog",
           element: <Blog />,
         },
       ],

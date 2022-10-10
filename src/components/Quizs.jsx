@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Quizs = ({ data }) => {
-  console.log(data);
   return (
     <section className="text-gray-600 body-font">
       <div className="container py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">

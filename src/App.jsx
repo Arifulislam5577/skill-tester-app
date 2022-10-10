@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Blog from "./pages/Blog";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import Quiz from "./pages/Quiz";
 import Statistics from "./pages/Statistics";
 import { getQuizById } from "./utils/getQuizById";
@@ -31,6 +32,10 @@ function App() {
         {
           path: "blog",
           element: <Blog />,
+        },
+        {
+          path: "*",
+          element: <NotFound />,
         },
       ],
     },

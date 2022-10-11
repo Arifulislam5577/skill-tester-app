@@ -46,9 +46,11 @@ const Statistics = () => {
     ],
   };
   return (
-    <div className="container py-5">
-      <Bar options={options} data={data} />
-    </div>
+    <section className="py-5">
+      <div className="container lg:w-3/4 mx-auto w-full">
+        <Bar options={options} data={data} />
+      </div>
+    </section>
   );
 };
 

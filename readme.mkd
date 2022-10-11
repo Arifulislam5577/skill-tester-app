@@ -1,10 +1,10 @@
-##SKILL TESTER
-###Live Link: `TODO`
+#SKILL TESTER
+##Live Link: https://skill-tester-app.netlify.app
 
 ##FEATURES OF THIS APPLICATION
 It is a simple quiz application.You can choose any category for test your skill of this subject. If you select correct answer it will display welcome message with toast and also if you select wrong answer it will display error message with toast.
 
-####HOME PAGE
+##HOME PAGE
 
 - Top of the Application there is a navbar includes some link
 - If you want to navigate to a different page,click the link from the navigation bar
@@ -12,7 +12,7 @@ It is a simple quiz application.You can choose any category for test your skill 
 - Under the Hero Section there are four different categories of quiz,laoded from API
 - If you click the image or start quiz button it will navigate you a different page dynamically and show the related question
 
-####QUIZ PAGE
+##QUIZ PAGE
 
 - Banner area display the current quiz topic name and total number of correct and incorrect answers
 - Under the banner area it will show all the questions about the current quiz topic
@@ -21,14 +21,14 @@ It is a simple quiz application.You can choose any category for test your skill 
 - If you click incorrect answer it will display error message with toast and count the number of incorrect answers and display it banner area.
 - If you click the eye icon it will display the correct answer of this question.
 
-###STATISTICS PAGE
+##STATISTICS PAGE
 
 - It will display the total number of questions each topic the quiz app.
 - There are four different topic in our app, it will display all the content dynamically from API
 
-###BLOG PAGE
+##BLOG PAGE
 
 - It will display three different question.
 - Blod text is a question and small text represent this question answer.
 
-###`THANK YOU`
+##`THANK YOU`

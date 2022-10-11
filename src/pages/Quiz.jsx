@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { BiArrowToRight } from "react-icons/bi";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
+import Modal from "../components/Modal";
 const Quiz = () => {
+  //REAL
+
   const {
     data: { name, questions },
   } = useLoaderData();
 
-  console.log(useLoaderData());
+  //FAKE
+  // const { name, questions } = useLoaderData();
 
+  const [showModal, setShowModal] = useState(false);
+  const [answer, setAnswer] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [InCorrectAnswer, setInCorrectAnswer] = useState(0);
 
@@ -26,25 +33,39 @@ const Quiz = () => {
     return string.replace("</p>", "");
   };
 
+  const handleModal = (ans) => {
+    setAnswer(ans);
+    setShowModal(true);
+  };
+
   return (
     <section>
-      <div className="py-10 bg-gray-100 text-center">
+      {showModal && <Modal setShowModal={setShowModal} ans={answer} />}
+
+      <div className="md:py-10 py-5 bg-gray-100 text-center">
         <h1 className="text-2xl uppercase  font-bold text-orange-500 tracking-wider">
           {name}
         </h1>
         <p className="text-gray-400 mt-3">
-          Correct Answer :{" "}
+          Correct Answer :
           <span className="text-slate-900 font-bold">{correctAnswer}</span>
         </p>
         <p className="text-gray-400">
-          Incorrect Answer :{" "}
+          Incorrect Answer :
           <span className="text-red-500 font-bold">{InCorrectAnswer}</span>
         </p>
       </div>
-      <div className="lg:w-1/2 w-full mx-auto my-5">
+      <div className="lg:w-1/2 w-full mx-auto my-5 lg:px-0 px-5">
         {questions?.map((qt) => (
-          <div key={qt.id} className="question border p-5 mb-5">
-            <h2 className="font-bold  text-slate-900">
+          <div key={qt.id} className="question border md:p-5 p-3 mb-5 relative">
+            <button
+              className="absolute right-3 top-3 "
+              onClick={() => handleModal(qt.correctAnswer)}
+            >
+              <AiOutlineEyeInvisible size="20" />
+            </button>
+
+            <h2 className="md:font-bold  text-slate-900 mt-3 md:mt-0">
               {replaceP(qt.question)}
             </h2>
             <ul className="flex flex-col gap-3 mt-4">

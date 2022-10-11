@@ -56,7 +56,7 @@ const Quiz = () => {
         </p>
       </div>
       <div className="lg:w-1/2 w-full mx-auto my-5 lg:px-0 px-5">
-        {questions?.map((qt) => (
+        {questions?.map((qt, index) => (
           <div key={qt.id} className="question border md:p-5 p-3 mb-5 relative">
             <button
               className="absolute right-3 top-3 "
@@ -65,8 +65,9 @@ const Quiz = () => {
               <AiOutlineEyeInvisible size="20" />
             </button>
 
-            <h2 className="md:font-bold  text-slate-900 mt-3 md:mt-0">
-              {replaceP(qt.question)}
+            <h2 className="md:font-bold  text-slate-900 mt-3 md:mt-0 flex gap-2">
+              <span> Q:{index + 1}</span>
+              <span>{replaceP(qt.question)}</span>
             </h2>
             <ul className="flex flex-col gap-3 mt-4">
               {qt.options.map((option) => (

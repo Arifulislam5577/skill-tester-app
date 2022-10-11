@@ -18,13 +18,10 @@ function App() {
           element: <Home />,
           loader: async () =>
             fetch("https://openapi.programming-hero.com/api/quiz"),
-          // fetch("testDB/api.json"),
         },
         {
           path: "quiz/:id",
           element: <Quiz />,
-
-          // loader: async ({ params }) => await getQuizById(params.id),
           loader: async ({ params }) =>
             await fetch(
               `https://openapi.programming-hero.com/api/quiz/${params.id}`
@@ -40,11 +37,11 @@ function App() {
           path: "blog",
           element: <Blog />,
         },
-        {
-          path: "*",
-          element: <NotFound />,
-        },
       ],
+    },
+    {
+      path: "*",
+      element: <NotFound />,
     },
   ]);
   return <RouterProvider router={router}></RouterProvider>;

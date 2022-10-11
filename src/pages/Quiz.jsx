@@ -7,7 +7,6 @@ const Quiz = () => {
     data: { name, questions },
   } = useLoaderData();
 
-  console.log(useLoaderData());
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [InCorrectAnswer, setInCorrectAnswer] = useState(0);
 
